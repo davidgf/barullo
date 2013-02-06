@@ -1,0 +1,30 @@
+<div data-role="page" id="main">
+	<div data-role="header" >
+		<h1>Ai k'andar</h1>
+	</div><!-- /header -->
+	<div id="map" class="body"></div>
+	<div data-role="footer" data-position="fixed">
+		<%= link_to 'Artist', '#artist', 'data-rel' => 'dialog'%>
+	</div>
+</div>
+
+<div data-role="page" id="artist">
+	<div data-role="header" >
+		<h1>Search by artist</h1>
+		<%= form_tag "/search", :id => "search_form", :method => :get, :remote => true do %>
+		<%= text_field_tag :term %>
+		<%= hidden_field_tag "search_by", "artist" %>
+		<fieldset data-role="controlgroup" data-type="horizontal" id="date">
+			<%= label_tag "date_from",'from'-%>
+			<%= date_select 'date','from',:use_short_month => true, :order => [:day, :month, :year], :start_year => Time.now.year -%>
+		</fieldset>
+		<fieldset data-role="controlgroup" data-type="horizontal">
+			<%= label_tag "date_to", 'to'%>
+			<%= date_select 'date','to',:use_short_month => true, :order => [:day, :month, :year], :start_year => Time.now.year -%>
+		</fieldset>
+			<%= button_tag 'search',:type => "button",:id => 'search_btn' %>
+		
+	<% end %>
+	</div><!-- /header -->
+	<!-- <div data-role="footer" ></div> -->
+</div>

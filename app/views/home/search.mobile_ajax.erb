@@ -1,0 +1,9 @@
+concerts = <%= @parsed_date.to_json.html_safe %>;
+deleteOverlays();
+if(concerts!=null){
+	refreshConcertsMap(concerts);	
+}
+if("<%= flash[:error] %>") {
+	$('#notice').center().html("<%= flash[:error] %>");
+	$('#notice').fadeIn('2').delay(3000).fadeOut('2');
+}

@@ -1,0 +1,43 @@
+<%= content_for :head do %>
+	<%= javascript_include_tag 'about' %>
+<% end %>
+<section id="content" class="center">
+	<div id="quotation">
+		<h1>barullo:</h1><p>Confusing noise produced by voices, laughters, etc.</p>
+	</div>
+	<article id="about">
+		<p> 
+			<span class="logo"><span>B</span>arull<span>O</span><span class="small">.co.uk</span></span> 
+			was born with the intention of facilitating event 
+			searching for every live music lover. You just have to know where 
+			you want to go or who you want to see: we'll find and geolocate the 
+			concerts you are looking for, using the vast <%= link_to 'last.fm', 
+			'http://www.last.fm', :target => '_blank' %>
+			database as source. 
+		</p>
+		<p>
+			Also, we at <span class="logo"><span>B</span>arull<span>O</span><span class="small">.co.uk</span></span>
+			encourage you to get involved and join one of the biggest musical 
+			communities on the internet. Remember that if you are not able to 
+			find a band or an event you know, you've got the possibility of 
+			creating it yourself.
+		</p>
+		<p>
+			Lastly, we want you to know there's nothing we appreciate more than 
+			your feedback. So let us know you've been here, criticize us, insult
+			us, or just say hello and leave a comment:
+		</p>
+		
+		<section id="comments">
+			<%= form_for @comment, :url => '/comment' do |f| %>
+				<%= f.label :name %>
+				<%= f.text_field :name, :maxlength => 15 %><span id="countdown"></span></br>
+				<%= f.label :message %>
+				<%= f.text_area :message, :size => '50x3' %>
+				<%= f.submit 'post' %>
+			<% end %>
+			
+			<%= render :partial => 'comments/comment', :collection => Comment.order('created_at DESC'), :as => :c %>
+		</section>
+	</article>
+</section>

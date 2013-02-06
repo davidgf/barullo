@@ -1,0 +1,1 @@
+Mime::Type.register_alias "text/javascript", :mobile_ajax

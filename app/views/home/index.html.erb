@@ -1,0 +1,44 @@
+<%= content_for :head do %>
+  <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false" %>
+	<%= javascript_include_tag 'maps' %>
+<% end %>
+
+<div id="main_form" class="body">
+	<div class="center">
+	<%= form_tag "/search", :id => "search_form",:method => :get, :remote => true do %>
+		<%= text_field_tag :term, nil, :size => 12 %>
+		<%= select_tag "search_by", options_for_select({:artist=>"artist", :location=>"geo"})%>
+		<fieldset id="radius_fields">
+			<%= label_tag "radius"%>
+			<%= select_tag "radius", options_for_select({'2 km'=>"2",'5 km'=>"5",'10 km'=>"10"})%>
+		</fieldset>
+		<fieldset id="date">
+			<%= label_tag "date_from",'from'%>
+			<%= date_select 'date','from',:use_short_month => true, :order => [:day, :month, :year], :start_year => Time.now.year %>
+			<%= label_tag "date_to", 'to'%>
+			<%= date_select 'date','to',:use_short_month => true, :order => [:day, :month, :year], :start_year => Time.now.year %>
+		</fieldset>
+		<%= submit_tag 'search' %>
+	<% end %>
+	<%= image_tag "ajax-loader.gif", :id => "spinner" %>
+	</div>
+</div>
+<aside id="notice" class="popup_error"><%= flash[:error] %></aside>
+
+<section id="content" class="body">
+	<aside class="widget left">
+		<header></header>
+		<div id="info">
+			<h1>Find your gigs!</h1>
+			<p><span>...how?</span> Just type who you want to see or where you want to go for a bop, we'll do the rest</p>
+		</div>
+	</aside>
+	<aside class="widget right">
+		<header></header>
+		<p>Can't find a concert?</p>
+		<p>Add it...</p>
+		<%= link_to image_tag('lastfm_black60.png', :alt => 'last.fm logo'), 'http://www.last.fm/events/add', :target => '_blank', :title =>'last.fm' %>
+		<footer>powered by AudioScrobbler<%= link_to image_tag('lastfm_logo_black.png', :alt => 'last.fm logo'), 'http://www.last.fm', :target => '_blank', :title =>'last.fm' %></footer>
+	</aside>
+	<div id="map"></div>
+</section>

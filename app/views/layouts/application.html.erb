@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Barullo | Find your gigs</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= yield :head %>
+  <%= csrf_meta_tags %>
+  <meta name="msvalidate.01" content="F10599D5A7A714514D05497AE17153F5" />
+  <meta name="Description" content="Just type who you want to see or where you want to go for a bop, we'll do the rest" />
+  <meta name="Keywords" content="gigs,concerts,live music,gig finder,concert finder,concerts in,gigs in" />
+  <meta name="Language" content="English" />
+  <script type="text/javascript">
+	   var _gaq = _gaq || [];
+  	_gaq.push(['_setAccount', 'UA-27384007-1']);
+  	_gaq.push(['_setDomainName', 'barullo.co.uk']);
+  	_gaq.push(['_trackPageview']);
+
+  	(function() {
+    	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  	})();
+	</script>
+	<!--[if lt IE 9]>
+		<script>
+			document.location.href = '/ie';
+			document.createElement('header');
+ 			document.createElement('hgroup');
+			document.createElement('nav');
+ 			document.createElement('menu');
+ 			document.createElement('section');
+ 			document.createElement('article');
+ 			document.createElement('aside');
+ 			document.createElement('footer');
+		</script>
+	<![endif]-->
+</head>
+<body>
+
+<div class="body">
+	<header class="main">
+		<%= link_to '<span>B</span>ARULL<span>O</span><span class="small">.co.uk</span>'.html_safe, root_path, 
+				:class => "head_link logo" %>
+		<ul>
+			<li><%= link_to "ABOUT", about_path, :class => "head_link" %></li>
+			<li><%= link_to "CONTACT", contact_path, :class => "head_link" %></li>
+		</ul>
+	</header>
+</div>
+
+<%= yield %>
+
+</body>
+</html>

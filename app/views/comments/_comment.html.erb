@@ -1,0 +1,11 @@
+<div class="comment">
+	<header>
+		<span class="barullo">...who?</span>
+		<%= c.name %>
+		<span class="date">
+			<span class="barullo">...when?</span>
+			<%= c.created_at.strftime("%d/%m/%Y, %H:%M") %>
+		</span>
+	</header>
+	<div class="comment_body"><%= simple_format(c.message) %></div>
+</div>

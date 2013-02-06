@@ -1,0 +1,27 @@
+<section id="content" class="center">
+	<article id="contact">
+		<p>
+			Do you wanna tell us something that doesn't fit in 140 characters? Fill the form
+			or just send us a <%= mail_to 'barullocouk@gmail.com', 'mail' %>
+		</p>
+		<%= form_for @message, :url => '/mail', :method => :post do |f| %>
+			<div class="field">
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+			</div>
+			<div class="field">
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+			</div>
+			<div class="field">
+				<%= f.label :subject %>
+				<%= f.text_field :subject, :size => 78 %>
+			</div>
+			<div class="field">
+				<%= f.label :content, 'Message' %>
+				<%= f.text_area :content, :size => '60x25' %>
+			</div>
+			<%= f.submit 'send'%>
+		<% end %>
+	</div>
+</section>
